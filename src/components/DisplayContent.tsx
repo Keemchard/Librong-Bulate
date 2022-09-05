@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BookCard from "./BookCard";
+import ErrorPage from "./ErrorPage";
+import LoadingPage from "./LoadingPage";
 
 const DisplayContent = () => {
   const { bookCategoryName } = useParams();
@@ -8,20 +10,17 @@ const DisplayContent = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setError] = useState(false);
 
-  // console.log(bookCategoryName);
   const apiKey = "iXBpJ9qHefj1NhixHqALLwoxXPJ0ArRl";
   const url = `https://api.nytimes.com/svc/books/v3/lists/${bookCategoryName}.json`;
-  // console.log(bookCategoryName);
+
   const getBookNameBasedOnCategory = async () => {
     try {
-      // setError(false);
       setLoading(true);
       const res = await fetch(`${url}?api-key=${apiKey}`);
       const data = await res.json();
       const { results } = data;
       const { books } = results;
-      // console.log(results);
-      // console.log(books);
+
       setBooks(books);
       setLoading(false);
     } catch (error) {
@@ -31,29 +30,26 @@ const DisplayContent = () => {
     }
   };
 
-  //   console.log(books);
-
   useEffect(() => {
     getBookNameBasedOnCategory();
   }, [url]);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <LoadingPage />;
   }
 
-  if (errors === true) {
-    return (
-      <>
-        <h1>Something Went Wrong</h1>
-        <h3>Error 249 Too Many Request</h3>
-      </>
-    );
+  if (errors) {
+    return <ErrorPage />;
   }
+  const bookLength = <h1 style={{ color: "#C3083F" }}>{books.length}</h1>;
 
   return (
-    <div>
+    <div className="displayCon">
       <div>
-        <h1>{bookCategoryName}</h1>
+        <h1>
+          Top <span style={{ color: "#C3083F" }}>{books.length}</span>{" "}
+          {bookCategoryName?.toUpperCase()}
+        </h1>
       </div>
       <div className="cards-con">
         <BookCard books={books} />

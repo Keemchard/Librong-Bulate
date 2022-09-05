@@ -3,7 +3,8 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <h1>Footer</h1>
+      <p>Made with 🔥 and 🎨 by Keemchard Tamio</p>
+      <p>All Right Reserved 2022</p>
     </div>
   );
 };

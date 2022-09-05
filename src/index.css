@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1a1a1c;
 }
 
 code {
@@ -20,4 +21,25 @@ code {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: white;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #6f2232;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c3083f;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #950741;
 }

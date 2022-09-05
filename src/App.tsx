@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
+import logo from "./LB-edited.png";
+
 import DisplayContent from "./components/DisplayContent";
 
 import Footer from "./components/Footer";
@@ -22,9 +24,9 @@ function App() {
       setLoading(true);
       const res = await fetch(url);
       const data = await res.json();
-      // console.log(data);
+
       const { results } = data;
-      // console.log(results);
+
       setbookCategoryList(results);
       setLoading(false);
     } catch (error) {
@@ -33,29 +35,26 @@ function App() {
       console.log(`is there any errors: ${errors}`);
     }
   };
-  // console.log(bookCategoryList);
 
   useEffect(() => {
     get_book_by_category();
   }, [url]);
-  // get_book_by_category();
-
-  if (loading) {
-    return <h1>Loading list of book Categories</h1>;
-  }
-
-  if (errors) {
-    return <h1>Something went wrong</h1>;
-  }
 
   return (
     <>
       <BrowserRouter>
         <div className="main-container">
           <div className="side-bar">
-            <h1>Side Bar</h1>
+            <div className="logo">
+              <img className="logo" src={logo} alt="" />
+            </div>
+            <h2>Book Categories</h2>
             <div className="side-list">
-              <Sidebar bookCategoryList={bookCategoryList} />
+              <Sidebar
+                bookCategoryList={bookCategoryList}
+                loading={loading}
+                errors={errors}
+              />
             </div>
           </div>
           <div className="main">
