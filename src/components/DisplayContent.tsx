@@ -33,6 +33,7 @@ const DisplayContent = () => {
 
   useEffect(() => {
     getBookNameBasedOnCategory();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
   if (loading) {
@@ -42,7 +43,6 @@ const DisplayContent = () => {
   if (errors) {
     return <ErrorPage />;
   }
-  const bookLength = <h1 style={{ color: "#C3083F" }}>{books.length}</h1>;
 
   return (
     <div className="displayCon">

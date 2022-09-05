@@ -38,6 +38,7 @@ function App() {
 
   useEffect(() => {
     get_book_by_category();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
   return (
