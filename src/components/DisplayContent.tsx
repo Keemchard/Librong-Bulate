@@ -15,6 +15,7 @@ const DisplayContent = () => {
 
   const getBookNameBasedOnCategory = async () => {
     try {
+      setError(false);
       setLoading(true);
       const res = await fetch(`${url}?api-key=${apiKey}`);
       const data = await res.json();

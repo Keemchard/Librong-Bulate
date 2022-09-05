@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
   return (
     <div>
-      <h1>This is my header lol------------</h1>
+      <input type="text" placeholder="Search Book Category here" />
     </div>
   );
 };

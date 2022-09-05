@@ -20,7 +20,7 @@ function App() {
   const url = `${book_by_category_apiUrl}?api-key=${apiKey}`;
   const get_book_by_category = async () => {
     try {
-      // setError(false);
+      setError(false);
       setLoading(true);
       const res = await fetch(url);
       const data = await res.json();
@@ -46,7 +46,9 @@ function App() {
         <div className="main-container">
           <div className="side-bar">
             <div className="logo">
-              <img className="logo" src={logo} alt="" />
+              <Link to="/">
+                <img className="logo" src={logo} alt="" />
+              </Link>
             </div>
             <h2>Book Categories</h2>
             <div className="side-list">
