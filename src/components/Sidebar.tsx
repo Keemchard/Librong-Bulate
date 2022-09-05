@@ -7,7 +7,10 @@ const Sidebar = ({ bookCategoryList }: any) => {
       <ul>
         {bookCategoryList.map((items: any) => {
           return (
-            <Link to="/el1">
+            <Link
+              to={`/bookCat/${items.list_name_encoded}`}
+              key={items.list_name_encoded}
+            >
               <li>{items.display_name}</li>
             </Link>
           );
