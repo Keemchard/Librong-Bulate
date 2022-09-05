@@ -2,8 +2,9 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div>
+    <div className="head">
       <input type="text" placeholder="Search Book Category here" />
+      <button>Search</button>
     </div>
   );
 };
