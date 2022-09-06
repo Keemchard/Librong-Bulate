@@ -21,6 +21,7 @@ const CardComp = () => {
       const { results } = data;
       const { books } = results;
 
+      // eslint-disable-next-line array-callback-return
       books.map((items: any) => {
         if (items.title === bookTitle) {
           return setSpecificBook(items);
@@ -35,14 +36,17 @@ const CardComp = () => {
 
   useEffect(() => {
     getBook();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //   console.log(specificBook);
 
   const {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     amazon_product_url,
     author,
     book_image,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     book_uri,
     buy_links,
     contributor,
