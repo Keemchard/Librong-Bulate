@@ -26,11 +26,13 @@ const HomePage = () => {
         alignItems: "center",
       }}
     >
-      <img
-        style={{ width: "100%", borderRadius: "50%" }}
-        src={logo}
-        alt="logo"
-      />
+      <div>
+        <img
+          style={{ width: "500px", borderRadius: "50%" }}
+          src={logo}
+          alt="logo"
+        />
+      </div>
       {/* <h1 style={{ marginTop: "10px" }}>Home Page</h1> */}
       <div style={{ textAlign: "center", marginTop: "10px" }}>
         <h1 style={{ margin: "10px 0" }}>
@@ -41,6 +43,19 @@ const HomePage = () => {
           <span style={{ color: "#c3083f", fontWeight: "bold" }}>LB</span>! To
           explore, simply click anything that is clickable in this Web App
           &#128516;.
+        </p>
+        <p>
+          Click{" "}
+          <span
+            style={{
+              color: "#c3083f",
+              textDecoration: "underline",
+              cursor: "pointer",
+            }}
+          >
+            here
+          </span>{" "}
+          to learn more.
         </p>
       </div>
     </div>
