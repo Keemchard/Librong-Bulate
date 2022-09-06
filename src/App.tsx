@@ -8,6 +8,7 @@ import DisplayContent from "./components/DisplayContent";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import HomePage from "./components/HomePage";
 
 function App() {
   const [bookCategoryList, setbookCategoryList] = useState([]);
@@ -66,7 +67,7 @@ function App() {
             </div>
             <div className="data-con">
               <Routes>
-                <Route path="/" element={<h1>Home</h1>} />
+                <Route path="/" element={<HomePage />} />
                 <Route
                   path="/bookCat/:bookCategoryName"
                   element={<DisplayContent />}
