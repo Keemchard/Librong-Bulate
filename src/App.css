@@ -207,3 +207,74 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+/* CardComp */
+.info-main {
+  /* background-color: #1f0c10; */
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+.info-head {
+  /* background-color: tomato; */
+  margin-bottom: 30px;
+}
+.info {
+  /* background-color: gray; */
+  display: flex;
+}
+.info > div {
+  /* border: 1px solid red; */
+  padding: 10px;
+}
+.info-in-text span {
+  color: #950741;
+  font-weight: bold;
+}
+.info-in-text p {
+  margin: 5px 0;
+}
+.info-sec {
+  padding: 10px 30px !important;
+}
+
+.buy-link-btn {
+  background-color: transparent;
+  border: 2px solid #c3083f;
+  border-radius: 5px;
+  padding: 10px;
+  transition: 0.25s;
+  cursor: pointer;
+  margin: 5px;
+}
+.buy-link-btn:hover {
+  transform: scale(1.1);
+}
+.info-title {
+  color: #c3083f;
+}
+/* .button-con {
+  border: 1px solid red;
+} */
+.open-BL {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  width: 150px;
+  background-color: #6f2232;
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+  margin: 20px 0 5px 0;
+}
+.back-to-disp {
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 8px 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 20px 0 5px 0;
+  border: 2px solid #c3083f;
+}

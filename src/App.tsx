@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import HomePage from "./components/HomePage";
+import CardComp from "./components/CardComp";
 
 function App() {
   const [bookCategoryList, setbookCategoryList] = useState([]);
@@ -72,7 +73,10 @@ function App() {
                   path="/bookCat/:bookCategoryName"
                   element={<DisplayContent />}
                 />
-                <Route path="/el2" element={<h1>element Two</h1>} />
+                <Route
+                  path="/bookCat/:bookCategoryName/:bookTitle"
+                  element={<CardComp />}
+                />
               </Routes>
             </div>
             <div className="footer">
