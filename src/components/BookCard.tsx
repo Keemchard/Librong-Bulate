@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 const BookCard = ({ books }: any) => {
   const { bookCategoryName } = useParams();
   // console.log(`bookCategoryName is ${bookCategoryName}`);
-  console.log(books);
+  // console.log(books);
   return (
     <>
       {books.map((items: any) => {

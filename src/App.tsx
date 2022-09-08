@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import HomePage from "./components/HomePage";
 import CardComp from "./components/CardComp";
+import FullOverview from "./components/FullOverview";
 
 function App() {
   const [bookCategoryList, setbookCategoryList] = useState([]);
@@ -77,6 +78,7 @@ function App() {
                   path="/bookCat/:bookCategoryName/:bookTitle"
                   element={<CardComp />}
                 />
+                <Route path="/LB/fullOverView" element={<FullOverview />} />
               </Routes>
             </div>
             <div className="footer">
