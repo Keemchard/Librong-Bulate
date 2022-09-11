@@ -9,7 +9,9 @@ const Header = () => {
         <li>
           <Link to="/LB/fullOverView">Full Overview</Link>
         </li>
-        <li>Reviews</li>
+        <li>
+          <Link to="/LB/reviews">Reviews</Link>
+        </li>
       </ul>
       <input type="text" placeholder="Search Book Category here" />
       <button>Search</button>

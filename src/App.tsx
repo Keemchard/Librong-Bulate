@@ -11,6 +11,7 @@ import Sidebar from "./components/Sidebar";
 import HomePage from "./components/HomePage";
 import CardComp from "./components/CardComp";
 import FullOverview from "./components/FullOverview";
+import Reviews from "./components/Reviews";
 
 function App() {
   const [bookCategoryList, setbookCategoryList] = useState([]);
@@ -79,6 +80,7 @@ function App() {
                   element={<CardComp />}
                 />
                 <Route path="/LB/fullOverView" element={<FullOverview />} />
+                <Route path="/LB/reviews" element={<Reviews />} />
               </Routes>
             </div>
             <div className="footer">
