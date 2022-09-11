@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# LB for Book Hunters
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+
+![LB](https://user-images.githubusercontent.com/86994854/189523192-acc2cad7-4c84-48f5-856d-18a471c68712.png)
+
+## LB Preview 
+![image](https://user-images.githubusercontent.com/86994854/189523270-c6feff6b-9558-41e9-bea5-ca8c2e389285.png)
+![image](https://user-images.githubusercontent.com/86994854/189523287-5b5c72b3-2751-41d0-9fc1-0ea03bbbc0f9.png)
+![image](https://user-images.githubusercontent.com/86994854/189523318-f4b7150f-38ac-433c-bb8d-5f493e611f9e.png)
+![image](https://user-images.githubusercontent.com/86994854/189523347-b0b5ebc2-6a45-40ab-948a-f5e12b393ca4.png)
+
+
 
 ## Available Scripts
 
