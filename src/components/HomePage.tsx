@@ -1,7 +1,6 @@
 import logo from "./LB.png";
 
 const HomePage = () => {
-  // const [dayToday, setDayToday] = useState<number>();
   const date = new Date();
   let day = date.getDay();
 

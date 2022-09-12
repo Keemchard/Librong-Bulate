@@ -63,6 +63,7 @@
 .main {
   width: 75%;
   position: relative;
+  /* color: #a3a3a3; */
 }
 
 .header {
@@ -118,6 +119,9 @@
 .head ul li:hover {
   color: #c3083f;
   transform: scale(1.1);
+}
+.head-l {
+  text-decoration: none;
 }
 
 .data-con {

@@ -1,8 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 
 const Sidebar = ({ bookCategoryList, loading, errors }: any) => {
+  const [sideMenuItemName, setSideMenuItemName] = useState("");
   if (loading) {
     return (
       <div>
@@ -14,6 +15,7 @@ const Sidebar = ({ bookCategoryList, loading, errors }: any) => {
   if (errors) {
     return <ErrorPage />;
   }
+
   return (
     <>
       <ul>
@@ -24,7 +26,18 @@ const Sidebar = ({ bookCategoryList, loading, errors }: any) => {
               key={items.list_name_encoded}
               className="link-class"
             >
-              <li>{items.display_name}</li>
+              <li
+                onClick={() => {
+                  setSideMenuItemName(items.display_name);
+                }}
+                style={
+                  sideMenuItemName === items.display_name
+                    ? { color: "#c3083f" }
+                    : {}
+                }
+              >
+                {items.display_name}
+              </li>
             </Link>
           );
         })}

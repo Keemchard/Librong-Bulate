@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from "react";
-import BookCard from "./BookCard";
 import Books from "./Books";
-import FullOverview from "./FullOverview";
 
 const Category = ({ fullOverviewLists }: any) => {
   // const [bookOverview, setBookOverview] = useState([]);
