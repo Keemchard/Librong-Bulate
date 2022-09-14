@@ -12,6 +12,7 @@ import HomePage from "./components/HomePage";
 import CardComp from "./components/CardComp";
 import FullOverview from "./components/FullOverview";
 import Reviews from "./components/Reviews";
+import BestSeller from "./components/BestSeller";
 
 function App() {
   const [bookCategoryList, setbookCategoryList] = useState([]);
@@ -79,6 +80,7 @@ function App() {
                   path="/bookCat/:bookCategoryName/:bookTitle"
                   element={<CardComp />}
                 />
+                <Route path="/LB/bestseller" element={<BestSeller />} />
                 <Route path="/LB/fullOverView" element={<FullOverview />} />
                 <Route path="/LB/reviews" element={<Reviews />} />
               </Routes>

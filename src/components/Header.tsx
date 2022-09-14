@@ -7,7 +7,6 @@ const Header = () => {
   return (
     <div className="head">
       <ul>
-        <li>Best Seller</li>
         <li>
           <Link
             className="head-l"
@@ -24,6 +23,23 @@ const Header = () => {
             Full Overview
           </Link>
         </li>
+        <li>
+          <Link
+            className="head-l"
+            to="/LB/bestseller"
+            onClick={() => {
+              setMenuName("Best Seller");
+            }}
+            style={
+              menuName === "Best Seller"
+                ? { color: "#c3083f", fontWeight: "bold" }
+                : {}
+            }
+          >
+            Best Seller
+          </Link>
+        </li>
+
         <li>
           <Link
             className="head-l"
