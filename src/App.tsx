@@ -1,97 +1,71 @@
-import React, { useEffect, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import logo from "./LB-edited.png";
 
-import DisplayContent from "./components/DisplayContent";
-
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import HomePage from "./components/HomePage";
-import CardComp from "./components/CardComp";
-import FullOverview from "./components/FullOverview";
-import Reviews from "./components/Reviews";
-import BestSeller from "./components/BestSeller";
+import LoadingPage from "./components/LoadingPage";
+import Footer from "./components/Footer";
+
+const HomePage = lazy(() => import("./components/HomePage"));
+const SubjectPage = lazy(() => import("./components/SubjectPage"));
+const BookDetail = lazy(() => import("./components/BookDetail"));
+const TrendingPage = lazy(() => import("./components/TrendingPage"));
+const SearchResults = lazy(() => import("./components/SearchResults"));
 
 function App() {
-  const [bookCategoryList, setbookCategoryList] = useState([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [errors, setError] = useState(false);
-
-  const apiKey = "iXBpJ9qHefj1NhixHqALLwoxXPJ0ArRl";
-  const book_by_category_apiUrl =
-    "https://api.nytimes.com/svc/books/v3/lists/names.json";
-  const url = `${book_by_category_apiUrl}?api-key=${apiKey}`;
-  const get_book_by_category = async () => {
-    try {
-      setError(false);
-      setLoading(true);
-      const res = await fetch(url);
-      const data = await res.json();
-
-      const { results } = data;
-
-      setbookCategoryList(results);
-      setLoading(false);
-    } catch (error) {
-      setError(true);
-      console.log(error);
-      console.log(`is there any errors: ${errors}`);
-    }
-  };
-
-  useEffect(() => {
-    get_book_by_category();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const closeSidebar = () => setSidebarOpen(false);
 
   return (
-    <>
-      <BrowserRouter>
-        <div className="main-container">
-          <div className="side-bar">
-            <div className="logo">
-              <Link to="/">
-                <img className="logo" src={logo} alt="" />
-              </Link>
-            </div>
-            <h2>Book Categories</h2>
-            <div className="side-list">
-              <Sidebar
-                bookCategoryList={bookCategoryList}
-                loading={loading}
-                errors={errors}
-              />
-            </div>
+    <BrowserRouter>
+      <div className="main-container">
+        <div
+          className={`sidebar-overlay${sidebarOpen ? " active" : ""}`}
+          onClick={closeSidebar}
+        />
+        <div className={`side-bar${sidebarOpen ? " open" : ""}`}>
+          <div className="logo">
+            <Link to="/" onClick={closeSidebar}>
+              <img className="logo" src={logo} alt="Librong Bulate" />
+            </Link>
           </div>
-          <div className="main">
-            <div className="header">
-              <Header />
-            </div>
-            <div className="data-con">
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route
-                  path="/bookCat/:bookCategoryName"
-                  element={<DisplayContent />}
-                />
-                <Route
-                  path="/bookCat/:bookCategoryName/:bookTitle"
-                  element={<CardComp />}
-                />
-                <Route path="/LB/bestseller" element={<BestSeller />} />
-                <Route path="/LB/fullOverView" element={<FullOverview />} />
-                <Route path="/LB/reviews" element={<Reviews />} />
-              </Routes>
-            </div>
-            <div className="footer">
-              <Footer />
-            </div>
+          <h2>Subjects</h2>
+          <div className="side-list">
+            <Sidebar onNavigate={closeSidebar} />
           </div>
         </div>
-      </BrowserRouter>
-    </>
+        <div className="main">
+          <div className="header">
+            <button
+              className="hamburger"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              aria-label="Toggle menu"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+            <Header />
+          </div>
+          <div className="data-con">
+            <Suspense fallback={<LoadingPage />}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/subject/:slug" element={<SubjectPage />} />
+                <Route path="/book/:workId" element={<BookDetail />} />
+                <Route path="/trending" element={<TrendingPage />} />
+                <Route path="/search" element={<SearchResults />} />
+              </Routes>
+            </Suspense>
+          </div>
+          <div className="footer">
+            <Footer />
+          </div>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

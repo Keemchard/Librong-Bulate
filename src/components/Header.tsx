@@ -1,64 +1,58 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
-  // const [isActive, setIsActive] = useState(false);
-  const [menuName, setMenuName] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = query.trim();
+    if (q) {
+      navigate(`/search?q=${encodeURIComponent(q)}`);
+    }
+  };
+
+  const isActive = (path: string) => location.pathname === path;
+
   return (
     <div className="head">
       <ul>
         <li>
           <Link
             className="head-l"
-            to="/LB/fullOverView"
-            onClick={() => {
-              setMenuName("Full Overview");
-            }}
+            to="/"
             style={
-              menuName === "Full Overview"
-                ? { color: "#c3083f", fontWeight: "bold" }
-                : {}
+              isActive("/") ? { color: "#c3083f", fontWeight: "bold" } : {}
             }
           >
-            Full Overview
+            Home
           </Link>
         </li>
         <li>
           <Link
             className="head-l"
-            to="/LB/bestseller"
-            onClick={() => {
-              setMenuName("Best Seller");
-            }}
+            to="/trending"
             style={
-              menuName === "Best Seller"
+              isActive("/trending")
                 ? { color: "#c3083f", fontWeight: "bold" }
                 : {}
             }
           >
-            Best Seller
-          </Link>
-        </li>
-
-        <li>
-          <Link
-            className="head-l"
-            to="/LB/reviews"
-            onClick={() => {
-              setMenuName("Reviews");
-            }}
-            style={
-              menuName === "Reviews"
-                ? { color: "#c3083f", fontWeight: "bold" }
-                : {}
-            }
-          >
-            Reviews
+            Trending
           </Link>
         </li>
       </ul>
-      <input type="text" placeholder="Search Book Category here" />
-      <button>Search</button>
+      <form onSubmit={handleSearch} style={{ display: "contents" }}>
+        <input
+          type="text"
+          placeholder="Search books..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
     </div>
   );
 };

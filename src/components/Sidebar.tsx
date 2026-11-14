@@ -1,48 +1,22 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import ErrorPage from "./ErrorPage";
+import { NavLink } from "react-router-dom";
+import { SUBJECTS } from "../config";
 
-const Sidebar = ({ bookCategoryList, loading, errors }: any) => {
-  const [sideMenuItemName, setSideMenuItemName] = useState("");
-  if (loading) {
-    return (
-      <div>
-        <h3>Loading list of book Categories</h3>
-      </div>
-    );
-  }
-
-  if (errors) {
-    return <ErrorPage />;
-  }
-
+const Sidebar = ({ onNavigate }: { onNavigate: () => void }) => {
   return (
-    <>
-      <ul>
-        {bookCategoryList.map((items: any) => {
-          return (
-            <Link
-              to={`/bookCat/${items.list_name_encoded}`}
-              key={items.list_name_encoded}
-              className="link-class"
-            >
-              <li
-                onClick={() => {
-                  setSideMenuItemName(items.display_name);
-                }}
-                style={
-                  sideMenuItemName === items.display_name
-                    ? { color: "#c3083f" }
-                    : {}
-                }
-              >
-                {items.display_name}
-              </li>
-            </Link>
-          );
-        })}
-      </ul>
-    </>
+    <ul>
+      {SUBJECTS.map((s) => (
+        <NavLink
+          to={`/subject/${s.slug}`}
+          key={s.slug}
+          className="link-class"
+          onClick={onNavigate}
+        >
+          {({ isActive }) => (
+            <li style={isActive ? { color: "#c3083f" } : {}}>{s.label}</li>
+          )}
+        </NavLink>
+      ))}
+    </ul>
   );
 };
 

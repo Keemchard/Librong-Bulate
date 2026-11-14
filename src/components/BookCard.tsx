@@ -1,30 +1,39 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { coverUrl } from "../config";
+import LazyImage from "./LazyImage";
 
-const BookCard = ({ books }: any) => {
-  const { bookCategoryName } = useParams();
-  // console.log(`bookCategoryName is ${bookCategoryName}`);
-  // console.log(books);
+interface BookCardProps {
+  workKey: string;
+  title: string;
+  authorName: string;
+  coverId: number | null;
+  year: number | null;
+}
+
+const BookCard = ({ workKey, title, authorName, coverId, year }: BookCardProps) => {
+  const id = workKey.replace("/works/", "");
+  const cover = coverUrl(coverId, "M");
+
   return (
-    <>
-      {books.map((items: any) => {
-        return (
-          <Link
-            key={items.book_uri}
-            to={`/bookCat/${bookCategoryName}/${items.title}`}
-          >
-            <div className="book-card">
-              <h3 className="title">{items.title}</h3>
-              <div className="book-image-con">
-                <img src={items.book_image} alt={items.title} />
-              </div>
-              <div className="rank">
-                <p>{`Rank ${items.rank}`}</p>
-              </div>
-            </div>
-          </Link>
-        );
-      })}
-    </>
+    <Link
+      to={`/book/${id}`}
+      state={{ title, authorName, coverId, year }}
+    >
+      <div className="book-card">
+        <h3 className="title">{title}</h3>
+        <div className="book-image-con">
+          {cover ? (
+            <LazyImage src={cover} alt={title} className="book-cover-wrap" />
+          ) : (
+            <div className="no-cover">No Cover</div>
+          )}
+        </div>
+        <div className="rank">
+          <p className="book-author">{authorName}</p>
+          {year && <p className="book-year">{year}</p>}
+        </div>
+      </div>
+    </Link>
   );
 };
 
